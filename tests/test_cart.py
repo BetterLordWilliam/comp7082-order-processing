@@ -13,11 +13,36 @@ def test_add_item_to_cart(test_cart: ShoppingCart):
 def test_add_invalid_item_to_cart(test_cart: ShoppingCart):
     cart = test_cart
     assert cart.add_item('imnotreal', 1) is False
+    
+def test_add_same_item_to_cart(test_cart: ShoppingCart):
+    cart = test_cart
+    assert cart.add_item('MOU-02', 1) is True
+    assert cart.add_item('MOU-02', 1) is True
+    assert len(cart.lines) == 1
+    assert cart.lines[0].quantity == 2
+    
+def test_add_different_item_to_cart(test_cart: ShoppingCart):
+    cart = test_cart
+    assert cart.add_item('MOU-02', 1) is True
+    assert cart.add_item('USB-02', 2) is True
+    assert len(cart.lines) == 2
+    assert cart.lines[0].quantity == 1
+    assert cart.lines[1].quantity == 2
 
 def test_remove_item_from_cart(test_cart: ShoppingCart):
     cart = test_cart
     assert cart.add_item('MOU-02', 1) is True
     assert cart.remove_item('MOU-02') is True
+    
+def test_remove_same_item_from_cart(test_cart: ShoppingCart):
+    cart = test_cart
+    assert cart.add_item('MOU-02', 1) is True
+    assert cart.add_item('MOU-02', 1) is True
+    assert len(cart.lines) == 1
+    assert cart.lines[0].quantity == 2
+    assert cart.remove_item('MOU-02', 1) is True
+    assert len(cart.lines) == 1
+    assert cart.lines[0].quantity == 1
     
 def test_remove_invalid_item_from_cart(test_cart: ShoppingCart):
     cart = test_cart
