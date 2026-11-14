@@ -8,18 +8,21 @@ class CheckoutService:
         self.payment_gateway = payment_gateway
 
     def checkout(self, cart, payment_token, request_id):
+        # FIXED
         if len(cart.lines) == 0:
             return OrderResult(None, 'empty', 0)
-        amount = cart.total()
-        print(f'Charging payment token: {payment_token}')
+        if not request_id:
+            print('Missing request id')
+        if not cart.user_id:
+            print('Missing user id')
         if amount > 1000:
-            if cart.user_id:
-                if not request_id:
-                    print('Missing request id')
-                else:
-                    print('Large order')
+            print('Large order')
+        
         # Stock is decremented before payment and without a shared transaction.
             # payment is not a transaction?
+        # FIXED
+        amount = cart.total()
+        print(f'Charging payment token: {payment_token}')
         try:
             response = self.payment_gateway.charge(amount, payment_token)
             status = 'paid' if response['approved'] else 'declined'
