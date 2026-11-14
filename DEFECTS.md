@@ -1,4 +1,4 @@
-# identified defects
+# Identified Defects
 These are the defects that I identified:
 
 *at least 8 requried*
@@ -56,26 +56,9 @@ These are the defects that I identified:
         - checkout will just be repeated on the cart, although checkout does clear the cars lines (if it is invoked again)
             - not an issue
 
+# References
+Webpages I used while working on the code.
 
-# planned unit tests
-& these are my ideas for additional unit tests:
-
-*at least 12 required*
-
-## `test_repository`
-
-- `test_get_product`
-- `test_save_order`
-- `test_list_orders`
-- `test_update_stock`
-
-## `test_cart`
-
-## `test_checkout`
-
-
-
-# references
 - https://docs.python.org/3/library/sqlite3.html#
     - https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor
     - https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany
