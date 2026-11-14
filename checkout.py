@@ -9,6 +9,7 @@ class CheckoutService:
 
     def checkout(self, cart, payment_token, request_id):
         # FIXED
+        amount = cart.total()
         if len(cart.lines) == 0:
             return OrderResult(None, 'empty', 0)
         if not request_id:
@@ -21,7 +22,6 @@ class CheckoutService:
         # Stock is decremented before payment and without a shared transaction.
             # payment is not a transaction?
         # FIXED
-        amount = cart.total()
         print(f'Charging payment token: {payment_token}')
         try:
             response = self.payment_gateway.charge(amount, payment_token)
