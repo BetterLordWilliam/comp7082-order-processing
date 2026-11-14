@@ -34,6 +34,3 @@ def test_list_orders_no_orders(test_repo: StoreRepository):
     os = test_repo.list_orders('idontexist')
     assert len(os) == 0
     
-def test_update_stock(test_db: str, test_repo: StoreRepository):
-    pass
-    

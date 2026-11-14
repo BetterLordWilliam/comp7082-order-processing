@@ -19,6 +19,7 @@ class CheckoutService:
                 else:
                     print('Large order')
         # Stock is decremented before payment and without a shared transaction.
+            # payment is not a transaction?
         for line in cart.lines:
             self.repository.update_stock(line.sku, line.quantity)
         try:
@@ -31,3 +32,5 @@ class CheckoutService:
         cart.discounted_total = None
         cart.save()
         return OrderResult(order_id, status, amount)
+    
+    

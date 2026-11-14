@@ -1,5 +1,5 @@
 # identified defects
-First step is to go through the code to attempt to identify the defects in it.
+These are the defects that I identified:
 
 *at least 8 requried*
 
@@ -58,6 +58,8 @@ First step is to go through the code to attempt to identify the defects in it.
 
 
 # planned unit tests
+& these are my ideas for additional unit tests:
+
 *at least 12 required*
 
 ## `test_repository`
@@ -69,10 +71,7 @@ First step is to go through the code to attempt to identify the defects in it.
 
 ## `test_cart`
 
-## `test_payments`
-
 ## `test_checkout`
-
 
 
 

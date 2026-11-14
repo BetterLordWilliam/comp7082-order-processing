@@ -13,7 +13,7 @@ test_db_file: str   = 'test.db'
 test_user: str      = 'test_user'
 
 
-@fixture(scope='session')
+@fixture(scope='function')
 def test_db():
     db = test_db_file # a temporary database file for testing
     conn = sqlite3.connect(str(db))
@@ -28,7 +28,7 @@ def test_db():
     conn.commit()
     conn.close()
     
-@fixture(scope='session')
+@fixture(scope='function')
 def test_repo(test_db: str):
     return StoreRepository(test_db)
 
