@@ -1,5 +1,4 @@
 # identified defects
-
 First step is to go through the code to attempt to identify the defects in it.
 
 *at least 8 requried*
@@ -55,8 +54,8 @@ First step is to go through the code to attempt to identify the defects in it.
         - checkout will just be repeated on the cart, although checkout does clear the cars lines (if it is invoked again)
             - not an issue
 
-# planned unit tests
 
+# planned unit tests
 *at least 12 required*
 
 ## `test_repository`
