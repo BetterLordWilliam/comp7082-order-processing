@@ -17,10 +17,14 @@ class ShoppingCart:
             return False
         # TODO
         # another thing, this would have to lookup existing cart lines & check that the sum of the existing request + new requested amount is less
-        if product.stock < quantity:
+        # FIXED
+        cumulativequant = quantity
+        existing = next((x for x in self.lines if x.sku == sku), None)
+        if existing:
+            cumulativequant += existing.quantity
+        if product.stock < cumulativequant:
             print('Not enough stock')
             return False
-        existing = next((x for x in self.lines if x.sku == sku), None)
         if existing:
             existing.quantity += quantity
         else:
@@ -59,6 +63,8 @@ class ShoppingCart:
         else:
             print('Invalid coupon')
             return False
+        # FIXED (clamped min to 0)
+        amount = amount if amount > 0 else 0
         self.discount_code = code
         self.discounted_total = amount
         return True

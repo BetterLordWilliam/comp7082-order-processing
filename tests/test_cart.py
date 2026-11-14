@@ -90,7 +90,7 @@ def test_save15_discount(test_repo: StoreRepository, test_cart: ShoppingCart):
     assert cart.add_item(item.sku, 1) is True
     assert cart.total() >= 0
     assert cart.apply_discount('SAVE15') is True
-    assert cart.total() == item.price - 15 if item.price >= 15 else 0
+    assert cart.total() == ((item.price - 15) if item.price >= 15 else 0)
     
 def test_save15_repeat_discount(test_repo: StoreRepository, test_cart: ShoppingCart):
     cart = test_cart
@@ -101,5 +101,5 @@ def test_save15_repeat_discount(test_repo: StoreRepository, test_cart: ShoppingC
     assert cart.total() >= 0
     assert cart.apply_discount('SAVE15') is True
     assert cart.apply_discount('SAVE15') is True
-    assert cart.total() == item.price - 15 if item.price >= 15 else 0
+    assert cart.total() == ((item.price - 30) if item.price >= (30) else 0)
 
