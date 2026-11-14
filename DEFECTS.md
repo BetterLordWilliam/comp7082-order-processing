@@ -61,6 +61,10 @@ First step is to go through the code to attempt to identify the defects in it.
 
 ## `test_repository`
 
+- `test_insert_order`
+- `test_list_orders`
+- `test_update_stock`
+
 ## `test_cart`
 
 ## `test_payments`
