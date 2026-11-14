@@ -15,6 +15,8 @@ class ShoppingCart:
         if not product:
             print('Unknown product')
             return False
+        # TODO
+        # another thing, this would have to lookup existing cart lines & check that the sum of the existing request + new requested amount is less
         if product.stock < quantity:
             print('Not enough stock')
             return False

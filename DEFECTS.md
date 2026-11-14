@@ -14,6 +14,8 @@ First step is to go through the code to attempt to identify the defects in it.
 
 - `ShoppingCart` class
     - `apply_discount` code SAVE15 just subtracts from  the total, so that would potentially leave a negative amount which doesn't really make sense, it should subtract up to 15 dollars, but then I guess they just get free stuff if the cart is less than 15 dollars (not negative totals or refunds)
+    - `add_item`
+        - calculates stock against only the new requested amount, does not consider the existing in the order lines when checking the stock
     - general issue w/ discount calculation
         - discounts are applied to whatever is in the cart at the time of their application, but they do not apply to items added to the cart after wards.
         - it makes more sense to keep a list of applied discounts & then iterate & apply these at the time of checkout so that items added at any point will be discounted

@@ -9,9 +9,13 @@ from checkout import CheckoutService
 
 insert_products_query = 'insert into products (sku, name, price, stock) values (?, ?, ?, ?)'
 
+test_db_file: str   = 'test.db'
+test_user: str      = 'test_user'
+
+
 @fixture(scope='session')
 def test_db():
-    db = 'test.db' # a temporary database file for testing
+    db = test_db_file # a temporary database file for testing
     conn = sqlite3.connect(str(db))
     conn.executescript(SCHEMA)
     conn.execute(insert_products_query, ('MOU-02', 'Wireless mouse', 25.0, 10))
@@ -27,3 +31,8 @@ def test_db():
 @fixture(scope='session')
 def test_repo(test_db: str):
     return StoreRepository(test_db)
+
+@fixture(scope='function')
+def test_cart(test_repo: StoreRepository):
+    return ShoppingCart(test_user, test_repo)
+
